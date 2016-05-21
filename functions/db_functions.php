@@ -30,7 +30,7 @@ function set_character_set($conn,$cset='utf8')
 {
 	mysqli_query($conn,"set names $cset");
 	mysqli_query($conn,"set character_set_client=$cset"); 
-    mysqli_query($conn,"set character_set_results=$cset"); 
+	mysqli_query($conn,"set character_set_results=$cset"); 
 }
 function dbs($conn)
 {

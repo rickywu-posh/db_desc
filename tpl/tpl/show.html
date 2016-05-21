@@ -1,0 +1,48 @@
+<script type="text/javascript">
+$(function(){
+	$("#switch_db").change(function(){
+		window.location.href="index.php?db="+$(this).val();
+	});
+	$("#switch_table").change(function(){
+		window.location.href="index.php?db="+$("#switch_db").val()+'#'+$(this).val();
+	});
+});
+</script>
+<div class="body">
+<div class="toolbar">
+<span>Select DB:</span>
+<span>
+<select id="switch_db">
+<?php
+if(is_array($PageVars['dbs']))
+{
+	foreach($PageVars['dbs'] as $db)
+	{
+		echo '<option value="'.$db.'"'.($PageVars['cur_db']==$db?'selected':'').'>'.$db.'</option>';
+	}
+}
+?>
+</select>
+</span>
+<span>Tables:</span>
+<span>
+<select id="switch_table">
+<?php
+if(is_array($PageVars['tables']))
+{
+	foreach($PageVars['tables'] as $table)
+	{
+		echo '<option value="'.$table.'"'.($PageVars['cur_table']==$db?'selected':'').'>'.$table.'</option>';
+	}
+}
+?>
+</select>
+</span>
+<span id="logout" style="float:right;margin-right:20px;"><a href="index.php?logout">Logout</a></span>
+</div>
+<div class="content">
+<?php
+echo $PageVars['show_html'];
+?>
+</div>
+</div>

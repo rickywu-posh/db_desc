@@ -6,10 +6,11 @@ function db_connect()
 		$_SESSION['db_config']['host']=trim($_POST['host']);
 		$_SESSION['db_config']['username']=trim($_POST['username']);
 		$_SESSION['db_config']['password']=trim($_POST['password']);
+		$_SESSION['db_config']['port']=trim($_POST['port']);
 	}
 	if($_SESSION['db_config'])
 	{
-		$conn=mysqli_connect($_SESSION['db_config']['host'],$_SESSION['db_config']['username'],$_SESSION['db_config']['password']);
+		$conn=mysqli_connect($_SESSION['db_config']['host'],$_SESSION['db_config']['username'],$_SESSION['db_config']['password'], "", $_SESSION['db_config']['port']);
 		if(!$conn)
 		{
 			$_SESSION['db_config']=null;
